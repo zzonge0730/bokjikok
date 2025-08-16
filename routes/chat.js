@@ -9,6 +9,7 @@ dotenv.config();
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 router.post("/", async (req, res) => {
+  console.log("✅ /chat hit! body:", req.body);
   const { message } = req.body;
   if (!message) {
     return res.status(400).json({ error: "message field is required" });
@@ -25,7 +26,7 @@ router.post("/", async (req, res) => {
       messages: [
         {
           role: "system",
-          content: "너는 청년 복지 정책을 소개해주는 챗봇이야. JSON 형식으로 3개의 정책만 title과 description으로 요약해서 제공해줘.",
+          content: "너는 청년 복지 정책을 소개하는 챗봇이야. 반드시 JSON 배열만 출력해. 형식: [{\"title\": \"정책명\", \"description\": \"간단한 설명\"}, ...] 정확히 3개만."
         },
         {
           role: "user",
