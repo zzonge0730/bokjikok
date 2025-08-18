@@ -55,7 +55,11 @@ router.post("/", async (req, res) => {
 
     // 캐시에 저장
     cache.set(message, policies);
-    return res.json({source: "openai", reply: "추천된 복지 정책 3개를 안내드릴게요!", policies,});
+    return res.json({
+      source: "openai",
+      reply,     // ✅ AI 원문 답변 그대로 내려줌
+      policies,  // ✅ JSON 파싱된 정책 카드
+    });
   } catch (err) {
     console.error("/chat error:", err.message);
     return res.status(500).json({ error: "GPT 처리 중 오류 발생" });
