@@ -55,7 +55,7 @@ router.post("/", async (req, res) => {
 
     // 캐시에 저장
     cache.set(message, policies);
-    return res.json({ source: "openai", policies: Array.isArray(policies.policies) ? policies.policies : policies });
+    return res.json({source: "openai", reply: "추천된 복지 정책 3개를 안내드릴게요!", policies,});
   } catch (err) {
     console.error("/chat error:", err.message);
     return res.status(500).json({ error: "GPT 처리 중 오류 발생" });
