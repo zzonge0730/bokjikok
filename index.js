@@ -9,7 +9,8 @@ app.use(express.json());
 
 const chatRouter = require("./routes/chat");
 const policyRouter = require("./routes/policies");
-
+const diagnosisRouter = require("./routes/diagnosis");
+app.use("/diagnosis", diagnosisRouter);
 app.use("/chat", chatRouter);
 app.use("/policies", policyRouter);
 
