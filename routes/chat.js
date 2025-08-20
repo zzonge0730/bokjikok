@@ -31,7 +31,7 @@ router.post("/", async (req, res) => {
           {
             role: "system",
             content: `너는 청년 복지 정책을 소개하는 챗봇이야. 반드시 JSON 배열만 출력해.
-      형식: [{"title": "정책명", "description": "간단한 설명"}]
+      형식: [{"title": "정책명", "description": "간단한 설명", "deadline" : "마감일"}]
       정확히 3개만.
       title은 반드시 다음 목록 중에서만 선택해야 해:
       ${policyTitles}`
